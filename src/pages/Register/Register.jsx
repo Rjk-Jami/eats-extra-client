@@ -78,17 +78,17 @@ const Register = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control required name='password' type='text' placeholder="Password" />
+                    <Form.Control autoComplete='off' required name='password' type='text' placeholder="Password" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicRePassword">
                     <Form.Label>Re-Password</Form.Label>
-                    <Form.Control required name='rePassword' type='text' placeholder="Password" />
+                    <Form.Control autoComplete='off' required name='rePassword' type='text' placeholder="Password" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check  type="checkbox" label={<span>Accept <Link to={`/terms`}> Terms & Condition</Link></span>} checked={check} onChange={handleAccept}/>
                 </Form.Group>
                 <div className="d-grid gap-2">
-                <Button  disabled={!check} variant='warning' type='submit'>Sign Up</Button>
+                <Button className='fw-semibold'  disabled={!check} variant='warning' type='submit'>Sign Up</Button>
     </div>
                 <p className=' my-3'><small>Already have an Account? Please <Link to={`/login`} className='text-primary' >Login</Link></small></p>
             </Form>

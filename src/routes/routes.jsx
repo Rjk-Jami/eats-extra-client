@@ -9,6 +9,7 @@ import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Blog from '../pages/Blog/Blog';
 import Terms from '../pages/Terms/Terms';
+import LoginLayout from '../layouts/LoginLayout';
 
 
 
@@ -16,9 +17,13 @@ import Terms from '../pages/Terms/Terms';
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Main />,
+      element: <LoginLayout />,
       errorElement: <ErrorPage></ErrorPage>,
       children: [
+        {
+          path: "/",
+          element: <Main></Main>,
+        },
         {
           path: "/login",
           element: <Login></Login>,
