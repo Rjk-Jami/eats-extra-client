@@ -1,11 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import Header from '../pages/shared/Header/Header';
+import { Outlet } from 'react-router-dom';
+import Footer from '../pages/shared/Footer/Footer';
 
 const LoginLayout = () => {
-    const {user,loading,login,CreateUser,logOut,loginWithGoogle,loginWithGithub} = useContext(AuthContext)
+
+
+
+
     return (
         <div>
-            
+            <Header></Header>
+            <Outlet></Outlet>
+            <Footer></Footer>
         </div>
     );
 };

@@ -1,14 +1,33 @@
-import React from 'react';
-import { Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Button, Container, Image, Nav, NavDropdown, Navbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
+import { AuthContext } from '../../../provider/AuthProvider';
+import logo from '../../../assets/logo.png'
+import { LoginButton } from '../../../components/Button/Button';
 const Header = () => {
-    const user = false;
+    const {user, logOut} = useContext(AuthContext);
+    
+    const handleLogOut =()=>{
+        logOut()
+    }
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+          {user.displayName}
+        </Tooltip>
+      );
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
-                    <Navbar.Brand >Eats Extra</Navbar.Brand>
+                <img
+              alt=""
+              src={logo}
+              width="50"
+              height="50"
+              className="d-inline-block align-top"
+            />{' '}
+                    <Navbar.Brand  className='fw-semibold' ><span className='fw-bold'>E</span>ats <span className='fw-bold'>E</span>xtra</Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -18,12 +37,24 @@ const Header = () => {
 
                         </Nav>
                         <Nav>
+                            
                             {
-                                user && <FaUserCircle className='mx-2' style={{ fontSize: '2.5rem' }}></FaUserCircle>
+                                user &&  <>
+                                <OverlayTrigger
+                                placement="left"
+                                delay={{ show: 250, hide: 400 }}
+                                overlay={renderTooltip}
+                              >
+                                {
+                                    user.photoURL? <Image roundedCircle style={{height:50, width:50}}  src={user.photoURL}  className="d-inline-block align-top" /> : <FaUserCircle className='mx-2' style={{ fontSize: '2.5rem' }}></FaUserCircle>
+                                }
+                              </OverlayTrigger>
+                                </>
                             }
 
                             {
-                                user ? <Button variant="secondary">Logout</Button> : <Link to={`/login`}><Button variant="secondary">Login</Button></Link>
+                                user ? <Button onClick={handleLogOut} className='bg-dark bg-gradient
+                                ms-3 '>Logout</Button> : <Link to={`/login`}><LoginButton >Login</LoginButton></Link>
                             }
                             
                         </Nav>
