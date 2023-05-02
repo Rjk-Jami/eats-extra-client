@@ -8,6 +8,7 @@ import ErrorPage from '../components/ErrorPage/ErrorPage';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
 import Blog from '../pages/Blog/Blog';
+import Terms from '../pages/Terms/Terms';
 
 
 
@@ -29,6 +30,10 @@ import Blog from '../pages/Blog/Blog';
         {
           path: "/blog",
           element:<Blog></Blog>
+        },
+        {
+          path: "/terms",
+          element:<Terms></Terms>
         },
         
       ],
