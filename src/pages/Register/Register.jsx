@@ -1,23 +1,52 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
-    const { user, loading, login, CreateUser, logOut, loginWithGoogle, loginWithGithub } = useContext(AuthContext)
-    const {error, setError}= useState(null)
-    const {success, setSuccess}= useState(null)
+    const {auth, user, loading, login, CreateUser, logOut, loginWithGoogle, loginWithGithub } = useContext(AuthContext)
     const [check, setCheck] = useState(false)
     
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || '/'
+
     const handleCreateUser =(event)=>{
-        const { user, loading, login, CreateUser, logOut, loginWithGoogle, loginWithGithub } = useContext(AuthContext)
+        event.preventDefault()
         const form = event.target
         const name = form.name.value
         const photo = form.photo.value
         const email = form.email.value
         const password = form.password.value
+        const rePassword = form.rePassword.value
+        
+        if (password !== rePassword){
+            toast.error('Password did not matched!');
+           return;
+        }
 
         CreateUser(email, password)
+        .then(result=>{
+            const loggedUser = result.user
+            updateProfile(auth.currentUser,{
+                displayName: name,
+                photoURL: photo,
+              }).then(() => {
+                // Update successful
+              }).catch((error) => {
+                console.log(error.message)
+              });
+            
+            console.log(loggedUser)
+            toast.success('Login success')
+            form.reset()
+            navigate(from , {replace:true})
+        })
+        .catch(error=>{toast.error(error.message)})
+        
 
     }
 
@@ -30,7 +59,7 @@ const Register = () => {
         <div>
              <Container className='w-50 mx-auto'>
             <h2 className='text-center'>Sign up in to EatsExtra</h2>
-            <Form onSubmit={""}>
+            <Form onSubmit={handleCreateUser}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Name</Form.Label>
                     <Form.Control required name='name' type="text" placeholder="Enter name" />
@@ -51,15 +80,15 @@ const Register = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control required name='password' type='text' placeholder="Password" />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3" controlId="formBasicRePassword">
                     <Form.Label>Re-Password</Form.Label>
-                    <Form.Control required name='password' type='text' placeholder="Password" />
+                    <Form.Control required name='rePassword' type='text' placeholder="Password" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check  type="checkbox" label={<span>Accept <Link to={`/terms`}> Terms & Condition</Link></span>} checked={check} onChange={handleAccept}/>
                 </Form.Group>
                 <div className="d-grid gap-2">
-                <Button  disabled={!check} variant='primary'>Sign Up</Button>
+                <Button  disabled={!check} variant='warning' type='submit'>Sign Up</Button>
     </div>
                 <p className=' my-3'><small>Already have an Account? Please <Link to={`/login`} className='text-primary' >Login</Link></small></p>
             </Form>

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { AuthContext } from '../../../provider/AuthProvider';
 import logo from '../../../assets/logo.png'
-import { LoginButton } from '../../../components/Button/Button';
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
     
@@ -13,7 +12,7 @@ const Header = () => {
     }
     const renderTooltip = (props) => (
         <Tooltip id="button-tooltip" {...props}>
-          {user.displayName}
+          {user?.displayName}
         </Tooltip>
       );
     return (
@@ -46,7 +45,7 @@ const Header = () => {
                                 overlay={renderTooltip}
                               >
                                 {
-                                    user.photoURL? <Image roundedCircle style={{height:50, width:50}}  src={user.photoURL}  className="d-inline-block align-top" /> : <FaUserCircle className='mx-2' style={{ fontSize: '2.5rem' }}></FaUserCircle>
+                                    user?.photoURL? <Image roundedCircle style={{height:50, width:50}}  src={user.photoURL}  className="d-inline-block align-top" /> : <FaUserCircle className='mx-2' style={{ fontSize: '2.5rem' }}></FaUserCircle>
                                 }
                               </OverlayTrigger>
                                 </>
@@ -54,7 +53,7 @@ const Header = () => {
 
                             {
                                 user ? <Button onClick={handleLogOut} className='bg-dark bg-gradient
-                                ms-3 '>Logout</Button> : <Link to={`/login`}><LoginButton >Login</LoginButton></Link>
+                                ms-3 '>Logout</Button> : <Link to={`/login`}><Button variant='warning'>Login</Button></Link>
                             }
                             
                         </Nav>

@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { LoginButton } from '../../components/Button/Button';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
     const { user, loading, login, CreateUser, logOut, loginWithGoogle, loginWithGithub } = useContext(AuthContext)
@@ -22,7 +22,8 @@ const Login = () => {
         .then((result)=>{
             const loggedUser = result.user
             console.log(loggedUser)
-            
+            form.reset()
+            toast.success('login successfully!')
         })
         .catch(error=>{console.log(error.message)})
     }
@@ -68,7 +69,9 @@ const Login = () => {
                     <Form.Check  type="checkbox" label="Show password" checked={showPassword} onChange={toggleShowPassword}/>
                 </Form.Group>
                 <div className="d-grid gap-2">
-                <LoginButton>Login</LoginButton>
+                <Button  variant="warning" type="submit">
+                    Login
+                </Button>
     </div>
                 <p className=' my-3'><small>Don't have an Account? Please <Link to={`/register`} className='text-primary' >Sign up</Link></small></p>
             </Form>
