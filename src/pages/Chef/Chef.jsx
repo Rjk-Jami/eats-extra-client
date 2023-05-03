@@ -18,7 +18,7 @@ const Chef = ({ chef }) => {
                         <p>Numbers of recipes: <span className='fw-bold'>{num_recipes}</span></p>
                         </ListGroup.Item>
                         </ListGroup>
-                    <Link to={`/chefs/${id}`}>
+                    <Link to={`/recipes/${id}`}>
                     <Button  variant="btn btn-outline-dark btn-lg rounded-pill px-4 py-2 fw-semibold">View Recipes</Button>
                     </Link>
                     

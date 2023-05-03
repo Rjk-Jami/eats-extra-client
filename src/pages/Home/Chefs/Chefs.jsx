@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+
 import Chef from '../../Chef/Chef';
-import { DataContext } from '../../../provider/DataProvider';
+import { useLoaderData, useParams } from 'react-router-dom';
 
 const Chefs = () => {
-
-    const chefs = useContext(DataContext)
+    const chefs = useLoaderData()
+    // console.log(chefs)
 
 console.log(chefs)
     return (

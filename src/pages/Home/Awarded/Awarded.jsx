@@ -1,10 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import { DataContext } from '../../../provider/DataProvider';
+
 import AwardedChef from './AwardedChef';
 
 const Awarded = () => {
-    const chefs = useContext(DataContext)
+    const [chefs ,setChef] = useState([])
+
+    useEffect(()=>{
+        fetch('https://eats-extra-server-rjk-jami.vercel.app/chefs')
+        .then(res=>res.json())
+        .then(data=>setChef(data))
+        .catch(error=>console.log(error))
+    },[])
 
     const [awardedChef, setAwardedChef] = useState([])
 

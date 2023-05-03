@@ -13,6 +13,9 @@ import Terms from '../pages/Terms/Terms';
 import LoginLayout from '../layouts/LoginLayout';
 import Chefs from '../pages/Home/Chefs/chefs';
 import Chef from '../pages/Chef/Chef';
+import ChefsLayout from '../layouts/ChefsLayout';
+import ChefsBanner from '../pages/ChefsRecipes/ChefsBanner/ChefsBanner';
+import Recipes from '../pages/ChefsRecipes/Recipes/Recipes';
 
 
 
@@ -49,16 +52,31 @@ import Chef from '../pages/Chef/Chef';
     },
     {
       
-        path: "/chefs",
+        path: "chefs",
         element: <Main></Main>,
         children:[
           {
-            path:"/chefs/:id",
-            element:<Chef></Chef>,
+            path:"/chefs",
+            element:<Chefs></Chefs>,
+            loader:({params})=>fetch(`https://eats-extra-server-rjk-jami.vercel.app/chefs`) 
           },
         ]
       
+    },
+    {
+      path: "recipes",
+      element:<ChefsLayout></ChefsLayout>,
+      children:[
+        {
+          path:":id",
+          element:<Recipes></Recipes>,
+          loader:({params})=>fetch(`https://eats-extra-server-rjk-jami.vercel.app/recipes/${params.id}`)
+
+          
+        }
+      ]
     }
+
   ]);
 
 

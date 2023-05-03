@@ -19,7 +19,7 @@ const AwardedChef = ({ chef }) => {
                 {lifeStory}
               </Card.Text>
               <Card.Text>
-                <small className="text-body-secondary"><ReactStarsRating value={rating.number} /></small>
+                <small className="text-body-secondary"><ReactStarsRating value={Math.round(rating.number)} /></small>
               </Card.Text>
             </Card.Body>
           </div>
