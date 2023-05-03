@@ -1,6 +1,7 @@
 import React from 'react';
 import {
     createBrowserRouter,
+    Navigate,
     RouterProvider,
   } from "react-router-dom";
 import Main from '../layouts/Main';
@@ -10,6 +11,8 @@ import Register from '../pages/Register/Register';
 import Blog from '../pages/Blog/Blog';
 import Terms from '../pages/Terms/Terms';
 import LoginLayout from '../layouts/LoginLayout';
+import Chefs from '../pages/Home/Chefs/chefs';
+import Chef from '../pages/Chef/Chef';
 
 
 
@@ -20,9 +23,10 @@ import LoginLayout from '../layouts/LoginLayout';
       element: <LoginLayout />,
       errorElement: <ErrorPage></ErrorPage>,
       children: [
+        
         {
           path: "/",
-          element: <Main></Main>,
+          element: <Navigate to={`/chefs`}></Navigate>
         },
         {
           path: "/login",
@@ -43,6 +47,18 @@ import LoginLayout from '../layouts/LoginLayout';
         
       ],
     },
+    {
+      
+        path: "/chefs",
+        element: <Main></Main>,
+        children:[
+          {
+            path:"/chefs/:id",
+            element:<Chef></Chef>,
+          },
+        ]
+      
+    }
   ]);
 
 
