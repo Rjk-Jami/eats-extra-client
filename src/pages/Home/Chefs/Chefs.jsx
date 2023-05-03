@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Chef from '../../Chef/Chef';
+import { DataContext } from '../../../provider/DataProvider';
 
 const Chefs = () => {
 
-    const [chefs ,setChef] = useState([])
+    const chefs = useContext(DataContext)
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/chefs')
-        .then(res=>res.json())
-        .then(data=>setChef(data))
-        .catch(error=>console.log(error))
-    },[])
 console.log(chefs)
     return (
         <div>

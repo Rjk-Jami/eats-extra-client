@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, Image, ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Chef = ({ chef }) => {
     const { id, name, likes, num_recipes, photo_url, years_of_experience, awarded ,rating} = chef
@@ -17,7 +18,9 @@ const Chef = ({ chef }) => {
                         <p>Numbers of recipes: <span className='fw-bold'>{num_recipes}</span></p>
                         </ListGroup.Item>
                         </ListGroup>
-                    <Button variant="btn btn-outline-dark btn-lg rounded-pill px-4 py-2 fw-semibold">View Recipes</Button>
+                    <Link to={`/chefs/${id}`}>
+                    <Button  variant="btn btn-outline-dark btn-lg rounded-pill px-4 py-2 fw-semibold">View Recipes</Button>
+                    </Link>
                     
                 </Card.Body>
                 <Card.Footer className="fs-5">Likes: <span className='fw-bold'>{likes}</span></Card.Footer>

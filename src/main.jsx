@@ -9,12 +9,15 @@ import {
 import router from './routes/routes.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
 import { Toaster } from 'react-hot-toast';
+import DataProvider from './provider/DataProvider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
        <AuthProvider>
+       <DataProvider>
        <Toaster></Toaster>
        <RouterProvider router={router} />
+       </DataProvider>
      
        </AuthProvider>
   </React.StrictMode>,
