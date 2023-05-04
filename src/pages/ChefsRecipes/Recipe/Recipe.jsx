@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 import ReactStarsRating from 'react-awesome-stars-rating';
+import { toast } from 'react-hot-toast';
 
 const Recipe = ({ recipe }) => {
+const [favorite ,setFavorite] = useState(false)
+    const handleFavorite =()=>{
+        setFavorite(!favorite)
+        toast.success("added to favorite")  
+    }
     const { rating, name, ingredients, id, chef_id, cooking_method } = recipe
     return (
         <Col>
@@ -26,7 +32,7 @@ const Recipe = ({ recipe }) => {
                             <small><span>{rating}</span></small>
                         </div>
                         <div className="">
-                            <Button className='fw-semibold rounded-pill' variant='warning'>Add to Favorite</Button>
+                            <Button disabled={favorite} onClick={handleFavorite} className='fw-semibold rounded-pill' variant='warning'>Add to Favorite</Button>
                         </div>
                     </div>
                 </Card.Body>

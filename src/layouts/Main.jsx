@@ -8,6 +8,7 @@ import { Outlet } from 'react-router-dom';
 import Chefs from '../pages/Home/Chefs/chefs';
 import Awarded from '../pages/Home/Awarded/Awarded';
 import Footer from '../pages/shared/Footer/Footer';
+import TrendyRecipes from '../pages/Home/TrendyRecipes/TrendyRecipes';
 
 const Main = () => {
     return (
@@ -17,12 +18,12 @@ const Main = () => {
             <Container>
                 <Row>
                     <Col lg={8} >
-                        <h2>chefs</h2>
+                        
 
                         <Outlet></Outlet>
                     </Col>
                     <Col lg={4} >
-                        <h2>jami</h2>
+                        <TrendyRecipes></TrendyRecipes>
                     </Col>
                 </Row>
             </Container>

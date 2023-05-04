@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Container, Image, Nav, NavDropdown, Navbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { AuthContext } from '../../../provider/AuthProvider';
 import logo from '../../../assets/logo.png'
@@ -32,8 +32,14 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/blog">Blog</Nav.Link>
+                            
+                            <NavLink style={{ textDecoration: 'none' }} to={"/chefs"} 
+                            className={ ({ isActive }) => (isActive ? 'text-danger ' : '')} 
+                            ><span className='fw-semibold  mx-2'>Home</span></NavLink>
+                            <NavLink style={{ textDecoration: 'none' }} to={"/blog"} 
+                            className={ ({ isActive }) => (isActive ? 'text-danger ' : '')}
+                            ><span className='fw-semibold  mx-2'>Blog</span></NavLink>
+                            
 
                         </Nav>
                         <Nav>

@@ -1,11 +1,24 @@
-import React from 'react';
-import { Button, Card, Image, ListGroup } from 'react-bootstrap';
+import React, { useContext, useEffect, useState } from 'react';
+import { Button, Card, Image, ListGroup, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Chef = ({ chef }) => {
+    // const{loading} = useContext(AuthContext)
+    const [loading, setLoading] = useState(true)
+    useEffect(()=>{
+setTimeout(()=>{
+    setLoading(false)
+})
+       
+    },[])
     const { id, name, likes, num_recipes, photo_url, years_of_experience, awarded ,rating} = chef
     return (
         <div>
+{
+
+loading ? <><Spinner animation="border" variant="warning" /><h2>jami</h2></> :
+            
             <Card className="text-center mb-4" style={{background: 'linear-gradient(45deg, rgba(255,50,122,0.1), rgba(255,99,71,0.1))', backgroundRepeat: 'no-repeat' }}>
                 <div className='px-3 py-3'>
                 <Image src={photo_url} fluid  rounded />
@@ -25,6 +38,7 @@ const Chef = ({ chef }) => {
                 </Card.Body>
                 <Card.Footer className="fs-5">Likes: <span className='fw-bold'>{likes}</span></Card.Footer>
             </Card>
+}
         </div>
     );
 };

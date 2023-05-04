@@ -54,11 +54,12 @@ import Recipes from '../pages/ChefsRecipes/Recipes/Recipes';
       
         path: "chefs",
         element: <Main></Main>,
+        loader:({params})=>fetch(`https://eats-extra-server-rjk-jami.vercel.app/recipes`),
         children:[
           {
             path:"/chefs",
-            element:<Chefs></Chefs>,
-            loader:({params})=>fetch(`https://eats-extra-server-rjk-jami.vercel.app/chefs`) 
+            element:<Chefs></Chefs>
+             
           },
         ]
       

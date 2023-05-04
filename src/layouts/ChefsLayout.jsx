@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../pages/shared/Header/Header';
-import { Outlet, useLoaderData, useParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Footer from '../pages/shared/Footer/Footer';
 import { Container } from 'react-bootstrap';
 import ChefsBanner from '../pages/ChefsRecipes/ChefsBanner/ChefsBanner';

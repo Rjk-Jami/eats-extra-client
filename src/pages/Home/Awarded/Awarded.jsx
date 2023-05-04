@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 
 import AwardedChef from './AwardedChef';
@@ -20,7 +20,7 @@ const Awarded = () => {
         setAwardedChef(filteredChef)
     },[chefs])
     return (
-        <Container className='bg-secondary bg-gradient  bg-opacity-10  '>
+        <Container className='bg-secondary bg-gradient  bg-opacity-10 py-4 px-5'>
             <h2>Mastering the Culinary Arts: Celebrating the Talents of an Awarded <span className='fw-bold'>Chef</span> </h2>
        
 
