@@ -20,6 +20,7 @@ const Chefs = () => {
 console.log(chefs)
     return (
         <div>
+            
            {loading?       <Spinner animation="border" variant="warning" />:
 
             chefs.map(chef=><Chef key={chef.id} chef={chef}></Chef>)

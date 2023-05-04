@@ -23,8 +23,9 @@ const ChefsBanner = () => {
   <Container>
     <Row className="align-items-center py-5">
       <Col md={4}>
-        <Card className="border-0 bg-transparent">
-          <Card.Img src={selectedChef?.photo_url} className="img-fluid " alt="chef" />
+        <Card className="border-0 bg-transparent"> 
+        <Card.Img src={selectedChef?.photo_url} className="img-fluid " alt="chef" />
+
         </Card>
       </Col>
       <Col md={8}>

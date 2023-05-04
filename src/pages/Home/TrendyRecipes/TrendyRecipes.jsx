@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Image } from 'react-bootstrap';
 import { FaAngleDoubleDown } from 'react-icons/fa';
+import LazyLoad from 'react-lazy-load';
 import { useLoaderData } from 'react-router-dom';
 
 const TrendyRecipes = () => {
@@ -9,7 +10,7 @@ const TrendyRecipes = () => {
     const trendyRecipes =  recipes.filter((r)=>r.trendyRecipes === true)
     console.log(trendyRecipes)
     return (
-        <>
+        <div key={recipes}>
         <h2 style={{fontFamily:'Consolas'}} className='text-center fw-bold mb-5'><FaAngleDoubleDown className='text-warning'></FaAngleDoubleDown> Trendy Recipes <FaAngleDoubleDown className='text-warning'></FaAngleDoubleDown></h2>
         <div className='d-flex flex-column align-items-center gap-3 '>
             
@@ -20,6 +21,7 @@ const TrendyRecipes = () => {
                   'Light'
                   
                 ].map((variant) => (
+                  <LazyLoad threshold={0.95} height="100%" width="100%">
                   <Card border="warning"
                     bg={variant.toLowerCase()}
                     key={variant}
@@ -37,11 +39,12 @@ const TrendyRecipes = () => {
                       </Card.Text>
                     </Card.Body>
                   </Card>
+                  </LazyLoad>
                 ))}
               </>)
         }
         </div>
-        </>
+        </div>
     );
 };
 

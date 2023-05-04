@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { updateProfile } from 'firebase/auth';
 
@@ -36,6 +36,7 @@ const Register = () => {
                 photoURL: photo,
               }).then(() => {
                 // Update successful
+                navigate(from, {replace: true})
               }).catch((error) => {
                 console.log(error.message)
               });
