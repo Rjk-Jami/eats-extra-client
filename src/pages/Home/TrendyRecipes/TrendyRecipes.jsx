@@ -34,7 +34,7 @@ const TrendyRecipes = () => {
                     className="mb-2"
                   >
                     <Card.Header>
-                    <Image src="https://i.ibb.co/BPMr0r6/Nigella-Lawson.jpg" fluid rounded />
+                    <Image src={recipes?.photo_url} fluid rounded />
                     </Card.Header>
                     <Card.Body>
                       <Card.Title className='fs-3 fw-semibold'>{recipes?.name}</Card.Title>

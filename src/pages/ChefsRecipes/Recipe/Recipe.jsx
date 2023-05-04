@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Col } from 'react-bootstrap';
+import { Button, Card, Col, Image } from 'react-bootstrap';
 import ReactStarsRating from 'react-awesome-stars-rating';
 import { toast } from 'react-hot-toast';
 
@@ -18,7 +18,8 @@ const Recipe = ({ recipe }) => {
             <Card>
 
                 <Card.Body>
-                    <Card.Title>{name}</Card.Title>
+                <Image className='p-3' src={recipe?.photo_url} fluid rounded />
+                    <Card.Title className='mt-4'>{name}</Card.Title>
                     <p>
                         <span className='fw-semibold'>Ingredients</span>:
                     </p>
