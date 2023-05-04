@@ -40,7 +40,7 @@ const Register = () => {
                 console.log(error.message)
               });
             
-            console.log(loggedUser)
+            // console.log(loggedUser)
             toast.success('Login success')
             form.reset()
             navigate(from , {replace:true})

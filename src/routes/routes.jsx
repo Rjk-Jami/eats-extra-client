@@ -16,6 +16,7 @@ import Chef from '../pages/Chef/Chef';
 import ChefsLayout from '../layouts/ChefsLayout';
 import ChefsBanner from '../pages/ChefsRecipes/ChefsBanner/ChefsBanner';
 import Recipes from '../pages/ChefsRecipes/Recipes/Recipes';
+import PrivetRoute from './PrivetRouter';
 
 
 
@@ -70,7 +71,7 @@ import Recipes from '../pages/ChefsRecipes/Recipes/Recipes';
       children:[
         {
           path:":id",
-          element:<Recipes></Recipes>,
+          element:<PrivetRoute><Recipes></Recipes></PrivetRoute>,
           loader:({params})=>fetch(`https://eats-extra-server-rjk-jami.vercel.app/recipes/${params.id}`)
 
           
