@@ -34,10 +34,10 @@ const Header = () => {
                         <Nav className="mx-auto">
                             
                             <NavLink style={{ textDecoration: 'none' }} to={"/chefs"} 
-                            className={ ({ isActive }) => (isActive ? 'text-danger ' : '')} 
+                            className={ ({ isActive }) => (isActive ? 'text-danger ' : 'text-dark')} 
                             ><span className='fw-semibold  mx-2'>Home</span></NavLink>
                             <NavLink style={{ textDecoration: 'none' }} to={"/blog"} 
-                            className={ ({ isActive }) => (isActive ? 'text-danger ' : '')}
+                            className={ ({ isActive }) => (isActive ? 'text-danger ' : 'text-dark')}
                             ><span className='fw-semibold  mx-2'>Blog</span></NavLink>
                             
 
