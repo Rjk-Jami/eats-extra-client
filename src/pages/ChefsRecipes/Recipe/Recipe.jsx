@@ -2,23 +2,29 @@ import React, { useState } from 'react';
 import { Button, Card, Col, Image } from 'react-bootstrap';
 import ReactStarsRating from 'react-awesome-stars-rating';
 import { toast } from 'react-hot-toast';
+import { addToDb } from '../../../utils/LocalStorage';
 
 // card for recipe
 const Recipe = ({ recipe }) => {
     const [favorite, setFavorite] = useState(false)
-
+ 
     // favorite button
-    const handleFavorite = () => {
+    const handleFavorite = (recipe) => {
         setFavorite(!favorite)
         toast.success("added to favorite")
+        addToDb(recipe.id)
     }
+
+
+
+
     const { rating, name, ingredients, cooking_method } = recipe
     return (
         <Col>
             <Card>
 
                 <Card.Body>
-                <Image className='p-3' src={recipe?.photo_url} fluid rounded />
+                    <Image className='p-3' src={recipe?.photo_url} fluid rounded />
                     <Card.Title className='mt-4'>{name}</Card.Title>
                     <p>
                         <span className='fw-semibold'>Ingredients</span>:
@@ -36,7 +42,7 @@ const Recipe = ({ recipe }) => {
                             <small><span>{rating}</span></small>
                         </div>
                         <div className="">
-                            <Button disabled={favorite} onClick={handleFavorite} className='fw-semibold rounded-pill' variant='warning'>Add to Favorite</Button>
+                            <Button disabled={favorite} onClick={() => handleFavorite(recipe)} className='fw-semibold rounded-pill' variant='warning'>Add to Favorite</Button>
                         </div>
                     </div>
                 </Card.Body>

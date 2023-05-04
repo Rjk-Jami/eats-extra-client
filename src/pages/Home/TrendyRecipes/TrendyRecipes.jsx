@@ -26,7 +26,7 @@ const TrendyRecipes = () => {
                 ].map((variant) => (
                   <LazyLoad threshold={0.95} height="100%" width="">
                   <Card border="warning"
-                    style={{background: 'linear-gradient(45deg, #FFF2E6, #FFE5CC)', backgroundRepeat: 'no-repeat',width: '18rem' }}
+                    style={ {width: '18rem' }}
 
                     key={variant}
                     

@@ -6,6 +6,7 @@ import Recipe from '../Recipe/Recipe';
 import { Row } from 'react-bootstrap';
 
 const Recipes = () => {
+    // get data from loader
     const recipes = useLoaderData()
     // console.log(recipes)
 

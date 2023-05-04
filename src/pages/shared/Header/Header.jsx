@@ -39,6 +39,12 @@ const Header = () => {
                             <NavLink style={{ textDecoration: 'none' }} to={"/blog"} 
                             className={ ({ isActive }) => (isActive ? 'text-danger ' : 'text-dark')}
                             ><span className='fw-semibold  mx-2'>Blog</span></NavLink>
+                            <NavLink style={{ textDecoration: 'none' }} to={"/myFavoriteRecipes"} 
+                            className={ ({ isActive }) => (isActive ? 'text-danger ' : 'text-dark')}
+                            ><span className='fw-semibold  mx-2'>Favorite Recipes</span></NavLink>
+                            <NavLink style={{ textDecoration: 'none' }} to={"/aboutUs"} 
+                            className={ ({ isActive }) => (isActive ? 'text-danger ' : 'text-dark')}
+                            ><span className='fw-semibold  mx-2'>About Us</span></NavLink>
                             
 
                         </Nav>

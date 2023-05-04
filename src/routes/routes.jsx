@@ -16,6 +16,9 @@ import ChefsLayout from '../layouts/ChefsLayout';
 import ChefsBanner from '../pages/ChefsRecipes/ChefsBanner/ChefsBanner';
 import Recipes from '../pages/ChefsRecipes/Recipes/Recipes';
 import PrivetRoute from './PrivetRouter';
+import MyFavoriteRecipes from '../pages/MyFavoriteRecipes/MyFavoriteRecipes';
+import AboutUs from '../pages/AboutUs/AboutUs';
+
 
 
 
@@ -46,6 +49,15 @@ import PrivetRoute from './PrivetRouter';
         {
           path: "/terms",
           element:<Terms></Terms>
+        },
+        {
+          path: "/aboutUs",
+          element:<AboutUs></AboutUs>
+        },
+        {
+          path: "/myFavoriteRecipes",
+          element:<MyFavoriteRecipes/>,
+          loader:({params})=>fetch(`https://eats-extra-server-rjk-jami.vercel.app/recipes`),
         },
         
       ],

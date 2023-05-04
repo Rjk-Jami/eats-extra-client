@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import Header from '../pages/shared/Header/Header';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLoaderData } from 'react-router-dom';
 import Footer from '../pages/shared/Footer/Footer';
-
 const LoginLayout = () => {
-
+    
 
 
 
