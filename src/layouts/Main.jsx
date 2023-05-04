@@ -18,11 +18,10 @@ const Main = () => {
             <Container>
                 <Row>
                     <Col lg={8} >
-                        
-
                         <Outlet></Outlet>
                     </Col>
                     <Col lg={4} >
+                        {/* trendy recipes section */}
                         <TrendyRecipes></TrendyRecipes>
                     </Col>
                 </Row>

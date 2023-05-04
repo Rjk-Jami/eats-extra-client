@@ -1,4 +1,4 @@
-import React, {  createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../firebase/firebase.config';
 import { GoogleAuthProvider } from "firebase/auth";
@@ -16,53 +16,55 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
 
 
-    const CreateUser = (email, password) =>{
+    const CreateUser = (email, password) => {
         setLoading(true)
-        return createUserWithEmailAndPassword(auth , email , password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
     const login = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-    const logOut = ()=>{
+    const logOut = () => {
         setLoading(true)
         setUser('')
         toast.success('logout')
         return signOut(auth)
     }
-    const loginWithGoogle = ()=>{
-       return signInWithPopup(auth, googleProvider)
+    const loginWithGoogle = () => {
+        return signInWithPopup(auth, googleProvider)
     }
 
-    const loginWithGithub =()=>{
+    const loginWithGithub = () => {
         return signInWithPopup(auth, gitHubProvider)
     }
-    useEffect(()=>{
-        const unSubscribe = onAuthStateChanged(auth, currentUser=>{
+
+    //monitor auth state
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
             console.log(currentUser)
             setLoading(false)
         })
-        return ()=>{ unSubscribe()}
-    },[])
+        return () => { unSubscribe() }
+    }, [])
 
+    //trow data as object
+    const AuthInfo = {
+        auth,
+        user,
+        loading,
+        login,
+        CreateUser,
+        logOut,
+        loginWithGoogle,
+        loginWithGithub
 
-        const AuthInfo = {
-            auth,
-            user,
-            loading,
-            login,
-            CreateUser,
-            logOut,
-            loginWithGoogle,
-            loginWithGithub
+    }
+    return (
+        <AuthContext.Provider value={AuthInfo}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
 
-        }
-        return (
-            <AuthContext.Provider value={AuthInfo}>
-                {children}
-            </AuthContext.Provider>
-        );
-    };
-
-    export default AuthProvider;
+export default AuthProvider;

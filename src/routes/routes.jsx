@@ -12,7 +12,6 @@ import Blog from '../pages/Blog/Blog';
 import Terms from '../pages/Terms/Terms';
 import LoginLayout from '../layouts/LoginLayout';
 import Chefs from '../pages/Home/Chefs/chefs';
-import Chef from '../pages/Chef/Chef';
 import ChefsLayout from '../layouts/ChefsLayout';
 import ChefsBanner from '../pages/ChefsRecipes/ChefsBanner/ChefsBanner';
 import Recipes from '../pages/ChefsRecipes/Recipes/Recipes';

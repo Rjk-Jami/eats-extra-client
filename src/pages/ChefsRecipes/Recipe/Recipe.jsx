@@ -3,17 +3,20 @@ import { Button, Card, Col } from 'react-bootstrap';
 import ReactStarsRating from 'react-awesome-stars-rating';
 import { toast } from 'react-hot-toast';
 
+// card for recipe
 const Recipe = ({ recipe }) => {
-const [favorite ,setFavorite] = useState(false)
-    const handleFavorite =()=>{
+    const [favorite, setFavorite] = useState(false)
+
+    // favorite button
+    const handleFavorite = () => {
         setFavorite(!favorite)
-        toast.success("added to favorite")  
+        toast.success("added to favorite")
     }
-    const { rating, name, ingredients, id, chef_id, cooking_method } = recipe
+    const { rating, name, ingredients, cooking_method } = recipe
     return (
         <Col>
             <Card>
-                {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
+
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <p>

@@ -11,8 +11,10 @@ const LoginLayout = () => {
 
     return (
         <div>
+            {/* Header */}
             <Header></Header>
             <Outlet></Outlet>
+            {/* Footer */}
             <Footer></Footer>
         </div>
     );

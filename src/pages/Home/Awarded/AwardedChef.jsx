@@ -4,7 +4,7 @@ import ReactStarsRating from 'react-awesome-stars-rating';
 import LazyLoad from 'react-lazy-load';
 
 const AwardedChef = ({ chef }) => {
-    const { id, name, likes, num_recipes, photo_url, years_of_experience, awarded, rating, lifeStory } = chef
+    const { name, photo_url, rating, lifeStory } = chef
 
     return (
       <LazyLoad threshold={0.95} height="100%" width="100%" >

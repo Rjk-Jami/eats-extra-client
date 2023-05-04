@@ -8,10 +8,11 @@ const PrivetRoute = ({children}) => {
     const location = useLocation()
 
     const {user, loading} = useContext(AuthContext)
-
+// loader for privet page reload
     if(loading){
         return <div className="d-flex justify-content-center"><Spinner className='' animation="border" variant="warning" /></div>
     }
+    // privet page secret
     if(user){
         return children
     }

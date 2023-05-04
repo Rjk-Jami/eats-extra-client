@@ -8,13 +8,16 @@ import ChefsBanner from '../pages/ChefsRecipes/ChefsBanner/ChefsBanner';
 const ChefsLayout = () => {
     return (
         <div>
+            {/* header */}
             <Header></Header>
+            {/* Banner */}
             <ChefsBanner></ChefsBanner>
             <Container>
 
-            <Outlet></Outlet>
+                <Outlet></Outlet>
 
             </Container>
+            {/* footer */}
             <Footer></Footer>
         </div>
     );
