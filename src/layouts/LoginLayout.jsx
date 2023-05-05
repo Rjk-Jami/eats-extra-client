@@ -3,6 +3,7 @@ import { AuthContext } from '../provider/AuthProvider';
 import Header from '../pages/shared/Header/Header';
 import { Outlet, useLoaderData } from 'react-router-dom';
 import Footer from '../pages/shared/Footer/Footer';
+import App from '../App';
 const LoginLayout = () => {
     
 
@@ -12,6 +13,7 @@ const LoginLayout = () => {
         <div>
             {/* Header */}
             <Header></Header>
+            
             <Outlet></Outlet>
             {/* Footer */}
             <Footer></Footer>

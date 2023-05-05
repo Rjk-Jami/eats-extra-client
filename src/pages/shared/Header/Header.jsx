@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { AuthContext } from '../../../provider/AuthProvider';
 import logo from '../../../assets/logo.png'
+import App from '../../../App';
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
     
@@ -65,10 +66,9 @@ const Header = () => {
                             }
 
                             {
-                                user ? <Button onClick={handleLogOut} className='bg-dark bg-gradient fw-semibold
-                                ms-3 '>Logout</Button> : <Link to={`/login`}><Button className='fw-semibold' variant='warning'>Login</Button></Link>
+                                user ? <Button onClick={handleLogOut} className='mx-2  fw-semibold'>Logout</Button> : <Link to={`/login`}><Button className=' mx-2 fw-semibold' variant='warning'>Login</Button></Link>
                             }
-                            
+                            <App ></App>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

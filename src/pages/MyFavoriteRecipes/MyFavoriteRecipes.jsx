@@ -17,6 +17,7 @@ const MyFavoriteRecipes = () => {
       .then(data => setRecipes(data))
   }, [])
   
+  //get id from local storage
   useEffect(() => {
     const storedId = getFavoriteId();
     const savedFavorite = [];
@@ -30,9 +31,7 @@ const MyFavoriteRecipes = () => {
   }, [recipes])
   console.log(favorite)
 
-  const handleDeleteData = (id) => {
-    localStorage.removeItem(id);
-  };
+  
 
 
   return (
@@ -50,7 +49,7 @@ const MyFavoriteRecipes = () => {
           <FavoriteRecipe
             key={recipe.id}
             recipe={recipe}
-            handleDeleteData={handleDeleteData}
+            
           />
         ))}
       </tbody>

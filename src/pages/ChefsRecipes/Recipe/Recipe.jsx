@@ -13,24 +13,17 @@ const Recipe = ({ recipe }) => {
         toast.success("added to favorite")
         addToDb(recipe.id)
     }
-
+    // if id save in local storage btn disabled 
     useEffect(() => {
         const storedId = getFavoriteId();
-        const savedFavorite = [];
         for (const id in storedId) {
-
             if (recipe.id === parseInt(id)) {
                 setFavorite(true)
             }
         }
-
     }, [recipe])
-
-
-
-
-
     const { rating, name, ingredients, cooking_method } = recipe
+
     return (
         <Col>
             <Card>
