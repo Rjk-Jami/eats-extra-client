@@ -57,7 +57,6 @@ import AboutUs from '../pages/AboutUs/AboutUs';
         {
           path: "/myFavoriteRecipes",
           element:<MyFavoriteRecipes/>,
-          loader:({params})=>fetch(`https://eats-extra-server-rjk-jami.vercel.app/recipes`),
         },
         
       ],

@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Image } from 'react-bootstrap';
 import ReactStarsRating from 'react-awesome-stars-rating';
 import { toast } from 'react-hot-toast';
-import { addToDb } from '../../../utils/LocalStorage';
+import { addToDb, getFavoriteId } from '../../../utils/LocalStorage';
 
 // card for recipe
 const Recipe = ({ recipe }) => {
     const [favorite, setFavorite] = useState(false)
- 
     // favorite button
     const handleFavorite = (recipe) => {
         setFavorite(!favorite)
         toast.success("added to favorite")
         addToDb(recipe.id)
     }
+
+    useEffect(() => {
+        const storedId = getFavoriteId();
+        const savedFavorite = [];
+        for (const id in storedId) {
+
+            if (recipe.id === parseInt(id)) {
+                setFavorite(true)
+            }
+        }
+
+    }, [recipe])
+
 
 
 
